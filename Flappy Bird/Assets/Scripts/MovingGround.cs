@@ -22,8 +22,9 @@ public class MovingGround : MonoBehaviour
 
     private void Move()
     {
-        _groundPosition -= _speed * Time.deltaTime;
+        _groundPosition -= _speed * Time.deltaTime / 2f;
         _groundPosition = Mathf.Repeat(_groundPosition, _groundSize);
         _groundTransform.position = new Vector3(_groundPosition, _groundTransform.position.y, 0);
+       
     }
 }

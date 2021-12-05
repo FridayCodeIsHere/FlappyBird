@@ -26,4 +26,6 @@ public class Bird : MonoBehaviour
     {
         _rigidbody2D.velocity = Vector2.up * _jumpForce;
     }
+
+    
 }

@@ -14,9 +14,14 @@ public class Bird : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        GravityOff();
+    }
+
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!_rigidbody2D.isKinematic && Input.GetMouseButtonDown(0))
         {
             Jump();
         }
@@ -27,5 +32,13 @@ public class Bird : MonoBehaviour
         _rigidbody2D.velocity = Vector2.up * _jumpForce;
     }
 
-    
+    public void GravityOn()
+    {
+        _rigidbody2D.isKinematic = false;
+    }
+
+    public void GravityOff()
+    {
+        _rigidbody2D.isKinematic = true;
+    }
 }

@@ -70,21 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3788f1500137657499e1881523c15c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onCheckPoint:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: aa6a73cdb49b2e448b11683da2377153, type: 3}
-        m_TargetAssemblyTypeName: Score, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &852336769755681457
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +81,7 @@ GameObject:
   - component: {fileID: 852336769755681456}
   - component: {fileID: 852336769755681470}
   - component: {fileID: 852336769755681471}
+  - component: {fileID: 4017623946797205299}
   m_Layer: 0
   m_Name: BottomPipe
   m_TagString: Untagged
@@ -194,6 +180,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.26, y: 1.6}
   m_EdgeRadius: 0
+--- !u!114 &4017623946797205299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852336769755681457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf2e6727f755b3479894bb1816847ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &852336770712616151
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,6 +253,7 @@ GameObject:
   - component: {fileID: 852336770773155810}
   - component: {fileID: 852336770773155808}
   - component: {fileID: 852336770773155809}
+  - component: {fileID: 2896305840843843061}
   m_Layer: 0
   m_Name: TopPipe
   m_TagString: Untagged
@@ -353,3 +352,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.26, y: 1.6}
   m_EdgeRadius: 0
+--- !u!114 &2896305840843843061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852336770773155811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf2e6727f755b3479894bb1816847ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

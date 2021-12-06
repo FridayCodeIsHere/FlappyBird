@@ -5,6 +5,7 @@ using UnityEngine;
 public class MovingGround : MonoBehaviour
 {
     private Transform _groundTransform;
+    private bool _isMove = false;
     private float _groundSize;
     private float _groundPosition;
     private float _speed = 2f;
@@ -17,7 +18,10 @@ public class MovingGround : MonoBehaviour
 
     private void Update()
     {
-        Move();
+        if (_isMove)
+        {
+            Move();
+        }
     }
 
     private void Move()
@@ -25,6 +29,16 @@ public class MovingGround : MonoBehaviour
         _groundPosition -= _speed * Time.deltaTime / 2f;
         _groundPosition = Mathf.Repeat(_groundPosition, _groundSize);
         _groundTransform.position = new Vector3(_groundPosition, _groundTransform.position.y, 0);
-       
+
+    }
+
+    public void MoveOn()
+    {
+        _isMove = true;
+    }
+
+    public void MoveOff()
+    {
+        _isMove = false;
     }
 }

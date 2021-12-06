@@ -6,7 +6,7 @@ public class Pipe : MonoBehaviour
 {
     [SerializeField] private Transform _topPipe;
     [SerializeField] private Transform _bottomPipe;
-    [SerializeField] private float _height = 10f;
+    [SerializeField] private float _height = 200f;
     [SerializeField] private Vector2 _dirMove;
 
     private void Start()
@@ -23,7 +23,6 @@ public class Pipe : MonoBehaviour
     private void MovePipe()
     {
         transform.Translate(_dirMove * GameCore.singleton._speedGame * Time.deltaTime);
-        //_bottomPipe.transform.Translate(_dirMove * GameCore.singleton._speedGame * Time.deltaTime);
     }
 
 }

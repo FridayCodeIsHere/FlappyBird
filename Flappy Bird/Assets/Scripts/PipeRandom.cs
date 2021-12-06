@@ -5,19 +5,14 @@ using UnityEngine;
 public class PipeRandom : MonoBehaviour
 {
     [SerializeField] private GameObject _pipe;
-    private bool _isGame = true;
     private float _timer = 4f;
     private float _verticalRandomPipe = 1f;
     private float _horizontalRandomPipe = 1f;
 
-    private void Start()
-    {
-        StartCoroutine("CreatePipe");
-    }
 
     private IEnumerator CreatePipe()
     {
-        while (_isGame)
+        while (true)
         {
             float randomX = Random.Range(-_horizontalRandomPipe, _horizontalRandomPipe);
             float randomY = Random.Range(-_verticalRandomPipe, _verticalRandomPipe);
@@ -32,6 +27,18 @@ public class PipeRandom : MonoBehaviour
     {
         _verticalRandomPipe += 0.7f;
         _horizontalRandomPipe -= 0.4f;
+        _timer--;
+    }
+
+    public void StartRandom()
+    {
+        StartCoroutine(CreatePipe());
+
+    }
+
+    public void StopRandom()
+    {
+        StopCoroutine(CreatePipe());
     }
     
 }

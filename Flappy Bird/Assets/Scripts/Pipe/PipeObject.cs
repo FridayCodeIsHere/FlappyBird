@@ -10,7 +10,6 @@ public class PipeObject : MonoBehaviour
         Bird bird = collision.gameObject.GetComponent<Bird>();
         if (bird)
         {
-            Debug.Log("Bird collisions");
             GameCore.singleton.gameOver?.Invoke();
         }
     }

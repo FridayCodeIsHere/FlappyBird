@@ -7,6 +7,7 @@ public class Bird : MonoBehaviour
 {
     [SerializeField] private float _jumpForce;
     private Rigidbody2D _rigidbody2D;
+    private Vector2 _startPosition;
 
 
     private void Awake()
@@ -16,6 +17,7 @@ public class Bird : MonoBehaviour
 
     private void Start()
     {
+        _startPosition = transform.position;
         GravityOff();
     }
 
@@ -40,5 +42,10 @@ public class Bird : MonoBehaviour
     public void GravityOff()
     {
         _rigidbody2D.isKinematic = true;
+    }
+
+    public void SetDefaultPos()
+    {
+        transform.position = _startPosition;
     }
 }

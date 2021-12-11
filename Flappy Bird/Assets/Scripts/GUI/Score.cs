@@ -39,7 +39,7 @@ public class Score : MonoBehaviour
     {
         if (scores.Count == 0)
         {
-            return -1;
+            return _score;
         }
 
         int maxScore = 0;

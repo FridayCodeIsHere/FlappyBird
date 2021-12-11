@@ -17,7 +17,6 @@ public class CheckPoint : MonoBehaviour
         Bird bird = collision.GetComponent<Bird>();
         if (bird)
         {
-            Debug.Log("CheckPoint works");
             onCheckPoint?.Invoke();
         }
     }

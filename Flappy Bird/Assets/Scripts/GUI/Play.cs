@@ -9,4 +9,6 @@ public class Play : MonoBehaviour
     {
         GameCore.singleton.gameStart?.Invoke();
     }
+
+    
 }

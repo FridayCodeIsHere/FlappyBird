@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class PipeRandom : MonoBehaviour
 {
-    [SerializeField] private GameObject _pipe;
+    [SerializeField] private Pipe _pipePrefab;
+    [SerializeField] private Transform _container;
+    [SerializeField] private bool _autoExpand = false;
+    [SerializeField] private int _poolCount = 3;
+
     private float _timer = 4f;
     private float _verticalRandomPipe = 1f;
     private float _horizontalRandomPipe = 1f;
+    private Coroutine randomPipe;
 
+    private PoolMono<Pipe> _pool;
+
+    private void Start()
+    {
+        _pool = new PoolMono<Pipe>(_pipePrefab, _poolCount, _container);
+        _pool.autoExpand = _autoExpand;
+    }
 
     private IEnumerator CreatePipe()
     {
@@ -17,10 +29,21 @@ public class PipeRandom : MonoBehaviour
             float randomX = Random.Range(-_horizontalRandomPipe, _horizontalRandomPipe);
             float randomY = Random.Range(-_verticalRandomPipe, _verticalRandomPipe);
             Vector2 position = new Vector2(transform.position.x + randomX, transform.position.y + randomY);
-            GameObject pipe = Instantiate(_pipe, position, Quaternion.identity);
-            Destroy(pipe, 14f);
+            Pipe pipe = _pool.GetFreeElement();
+            pipe.transform.position = position;
             yield return new WaitForSeconds(_timer);
         }
+    }
+
+    public void StartRandom()
+    {
+        randomPipe = StartCoroutine(CreatePipe());
+
+    }
+
+    public void StopRandom()
+    {
+        StopCoroutine(randomPipe);
     }
 
     public void ComplicatedRandom()
@@ -30,15 +53,9 @@ public class PipeRandom : MonoBehaviour
         _timer--;
     }
 
-    public void StartRandom()
+    public void DeactivateAllPipies()
     {
-        StartCoroutine(CreatePipe());
-
+        _pool.DeactivateAllObjects();
     }
 
-    public void StopRandom()
-    {
-        StopCoroutine(CreatePipe());
-    }
-    
 }

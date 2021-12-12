@@ -23,6 +23,7 @@ public class Score : MonoBehaviour
         }
         Destroy(this.gameObject);
     }
+
     private void Start()
     {
         _scores = new List<int>();
@@ -39,8 +40,10 @@ public class Score : MonoBehaviour
     {
         if (scores.Count == 0)
         {
+            Debug.Log("List if empty");
             return _score;
         }
+        Debug.Log("List in not empty");
 
         int maxScore = 0;
         foreach (int score in scores)

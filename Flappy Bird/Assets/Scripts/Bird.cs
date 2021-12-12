@@ -47,5 +47,6 @@ public class Bird : MonoBehaviour
     public void SetDefaultPos()
     {
         transform.position = _startPosition;
+        _rigidbody2D.velocity = Vector3.zero;
     }
 }

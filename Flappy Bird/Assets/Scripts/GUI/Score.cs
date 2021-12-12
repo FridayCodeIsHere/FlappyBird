@@ -8,6 +8,8 @@ public class Score : MonoBehaviour
 {
     [SerializeField] private Text _userScore;
     [SerializeField] private Text _bestScore;
+    [SerializeField] private Image _imageMedal;
+    [SerializeField] private Sprite[] _medals;
     public static Score singleton { get; private set; }
     public List<int> _scores { get; private set; }
     private Text _scoreText;
@@ -40,10 +42,8 @@ public class Score : MonoBehaviour
     {
         if (scores.Count == 0)
         {
-            Debug.Log("List if empty");
             return _score;
         }
-        Debug.Log("List in not empty");
 
         int maxScore = 0;
         foreach (int score in scores)
@@ -54,6 +54,26 @@ public class Score : MonoBehaviour
             }
         }
         return maxScore;
+    }
+
+    private Sprite GetMedal()
+    {
+        if (_score <= 5)
+        {
+            return _medals[0];
+        }
+        else if (_score > 5 && _score <= 10)
+        {
+            return _medals[1];
+        }
+        else if (_score > 10)
+        {
+            return _medals[2];
+        }
+        else
+        {
+            throw new System.Exception("Oops...something was wrong :(");
+        }
     }
 
     public void AddScore()
@@ -73,9 +93,10 @@ public class Score : MonoBehaviour
         InitializationScore();
     }
 
-    public void ShowAllScores()
+    public void ShowProgress()
     {
         _userScore.text = _score.ToString();
         _bestScore.text = GetMaxScore(_scores).ToString();
+        _imageMedal.sprite = GetMedal();
     }
 }
